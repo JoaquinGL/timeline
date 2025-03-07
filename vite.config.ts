@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
+// Reemplaza "joaquingl" con tu usuario de GitHub y "timeline" con el nombre del repo
 export default defineConfig({
-  base: '/timeline-project/',
   plugins: [react()],
-})
+  base: '/timeline/', // 🔥 Asegura que el path base sea el correcto
+});
