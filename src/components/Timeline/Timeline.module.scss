@@ -1,0 +1,150 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+  background-color: #f2e8d2;
+}
+
+/* Línea vertical */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background-color: #c08457;
+  transform: translateX(-50%);
+}
+
+.timelineEvent {
+  background-position: 20%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  overflow: hidden;
+  margin-bottom: 60px;
+  border-radius: 0;
+  padding-inline: 40px;
+}
+
+/* Imagen de fondo detrás del año */
+.timelineEvent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Año alineado con la línea */
+.year {
+  font-weight: bold;
+  background-color: #c08457;
+  color: #f6f1eb;
+  padding: 5px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 20px; /* 🔥 Inicialmente pequeño */
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.year span {
+  font-size: 1.2rem; /* 🔥 Inicialmente oculto */
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.subtitle {
+  color: #9c6644;
+}
+
+.verticalLine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background-color: #222;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.yearBackground {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  font-size: 8rem;
+  font-weight: bold;
+  color: rgba(140, 122, 96, 0.3);
+  z-index: 1;
+}
+
+/* Contenido siempre a la derecha */
+.details {
+  background: #e8d6be;
+  padding: 20px;
+  border-radius: 10px;
+  width: 45%;
+  z-index: 3;
+  position: relative;
+}
+
+/* 🔻 Ajustes para móviles (MENOR A 768px) 🔻 */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px; /* Mover la línea a la izquierda */
+  }
+
+  .timelineEvent {
+    flex-direction: column;
+    align-items: flex-start;
+    background-image: none !important;
+  }
+
+  /* Ocultar la imagen en móviles */
+  .timelineEvent::before {
+    display: none;
+  }
+
+  /* Año alineado a la izquierda */
+  .year {
+    left: 20px; /* Mueve el año a la izquierda */
+    transform: none;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  /* Bloque de texto ahora está debajo del año */
+  .details {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 40px; /* Asegurar espacio con la línea */
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .yearBackground {
+    display: none;
+  }
+}

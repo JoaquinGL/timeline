@@ -1,0 +1,42 @@
+/* Reset básico para eliminar márgenes, paddings y estilos inconsistentes */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Establece estilos básicos para el body */
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #4f3f2f;
+}
+
+/* Elimina estilos de listas */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Elimina decoración de enlaces */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Asegura que las imágenes no se salgan del contenedor */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Configura una tipografía más uniforme */
+html {
+  scroll-behavior: smooth;
+  background-color: #f2e8d2;
+}
