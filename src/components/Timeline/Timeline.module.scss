@@ -20,7 +20,7 @@
 }
 
 .timelineEvent {
-  background-position: 20%;
+  background-position: 30%;
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
@@ -69,7 +69,7 @@
 }
 
 .year span {
-  font-size: 1.2rem; /* 🔥 Inicialmente oculto */
+  font-size: 1.8rem; /* 🔥 Inicialmente oculto */
   opacity: 0;
   transition: all 0.3s ease-in-out;
 }
@@ -90,6 +90,7 @@
 }
 
 .yearBackground {
+  padding-inline: 20px;
   position: absolute;
   top: 50%;
   left: 0;
@@ -98,6 +99,10 @@
   font-weight: bold;
   color: rgba(140, 122, 96, 0.3);
   z-index: 1;
+}
+
+.month {
+  font-size: 1.1rem;
 }
 
 /* Contenido siempre a la derecha */
@@ -111,6 +116,12 @@
 }
 
 /* 🔻 Ajustes para móviles (MENOR A 768px) 🔻 */
+@media (max-width: 1024px) {
+  .timelineEvent {
+    background-position: 20%;
+  }
+}
+
 @media (max-width: 768px) {
   .timeline::before {
     left: 20px; /* Mover la línea a la izquierda */

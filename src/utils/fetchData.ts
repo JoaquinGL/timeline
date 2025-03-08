@@ -1,9 +1,7 @@
 import { TimelineEvent } from "../types/timeline";
-import dotenv from "dotenv";
-dotenv.config();
 
 const API_URL = "https://api.zerosheets.com/v1/9zm";
-const API_TOKEN = process.env.API_TOKEN;
+const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 const fetchData = async (): Promise<TimelineEvent[]> => {
   const response = await fetch(API_URL, {

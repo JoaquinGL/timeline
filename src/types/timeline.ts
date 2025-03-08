@@ -7,4 +7,5 @@ export interface TimelineEvent {
   Imagen: string;
   Descripción: string;
   Link: string;
+  Mes?: string;
 }

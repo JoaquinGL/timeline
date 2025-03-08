@@ -78,8 +78,8 @@ const Timeline: React.FC = () => {
               yearRefs.current[index],
               { width: '20px', height: '20px', padding: '5px' }, // Inicialmente pequeño
               {
-                width: '50px',
-                height: '50px',
+                width: '90px',
+                height: '80px',
                 padding: '10px',
                 duration: 0.5,
                 ease: 'power3.out',
@@ -127,6 +127,7 @@ const Timeline: React.FC = () => {
           <div className={styles.overlay}></div>
           <div className={styles.yearBackground} ref={setYearBackgroundRef}>
             {event.Año}
+            {event.Mes ? <div className={styles.month}>{event.Mes}</div> : null}
           </div>
           <div className={styles.year} ref={setYearRef}>
             <span>{event.Año}</span>
