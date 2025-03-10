@@ -9,6 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Timeline: React.FC = () => {
   const [events, setEvents] = useState<TimelineEvent[]>([]);
+  const [loadedImages, setLoadedImages] = useState<{ [key: string]: boolean }>(
+    {},
+  );
+
   const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
   const yearRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -24,11 +28,14 @@ const Timeline: React.FC = () => {
     if (el) yearRefs.current.push(el);
   }, []);
 
+  const handleImageLoad = (id: string) => {
+    setLoadedImages((prev) => ({ ...prev, [id]: true }));
+  };
+
   useEffect(() => {
     if (timelineRefs.current.length > 0) {
       timelineRefs.current.forEach((el, index) => {
         if (el) {
-          // Animación principal del evento
           gsap.fromTo(
             el,
             { opacity: 0, y: 50 },
@@ -46,11 +53,10 @@ const Timeline: React.FC = () => {
             },
           );
 
-          // 🔥 Animación del year (círculo -> expansión con texto)
           if (yearRefs.current[index]) {
             gsap.fromTo(
               yearRefs.current[index],
-              { width: '20px', height: '20px', padding: '5px' }, // Inicialmente pequeño
+              { width: '20px', height: '20px', padding: '5px' },
               {
                 width: '90px',
                 height: '80px',
@@ -73,7 +79,7 @@ const Timeline: React.FC = () => {
                 scale: 1,
                 opacity: 1,
                 duration: 0.5,
-                delay: 0.2, // Se expande un poco después
+                delay: 0.2,
                 ease: 'power3.out',
                 scrollTrigger: {
                   trigger: el,
@@ -98,9 +104,21 @@ const Timeline: React.FC = () => {
           ref={setTimelineRef}
         >
           <div
-            className={styles.card}
-            style={{ backgroundImage: `url(${event.Imagen})` }}
+            className={`${styles.card} ${
+              !loadedImages[event._lineNumber] ? styles.skeleton : ''
+            }`}
           >
+            {!loadedImages[event._lineNumber] && (
+              <div className={styles.skeletonAnimation} />
+            )}
+            <img
+              src={event.Imagen}
+              alt={event.Título}
+              loading='lazy'
+              className={styles.cardImage}
+              onLoad={() => handleImageLoad(event._lineNumber.toString())}
+              style={{ opacity: loadedImages[event._lineNumber] ? 1 : 0 }}
+            />
             <div className={styles.text}>
               <div className={styles.card_year}>{event.Año}</div>
               <div className={styles.card_month}>{event.Mes}</div>

@@ -14,6 +14,7 @@ $details-background-color: #e8d6be;
   background-color: $timeline-background-color;
 }
 
+/* 🔥 Card con imagen de fondo */
 .card {
   aspect-ratio: 5 / 6;
   width: 100%;
@@ -26,12 +27,13 @@ $details-background-color: #e8d6be;
   align-items: flex-end;
   color: $timeline-background-color;
   overflow: hidden;
+  position: relative;
 
   .text {
     width: 100%;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.4); /* Negro semi-transparente */
-    backdrop-filter: blur(10px); /* Desenfoque del fondo */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
   }
 
   .card_year {
@@ -44,7 +46,47 @@ $details-background-color: #e8d6be;
   }
 }
 
-/* Línea vertical */
+/* Estilos de la imagen con lazy loading */
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* 🔥 Skeleton Loading Effect 🔥 */
+.skeleton {
+  background: #e0e0e0;
+  position: relative;
+}
+
+.skeletonAnimation {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    $details-background-color 25%,
+    $timeline-background-color 50%,
+    $details-background-color 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Línea vertical de la timeline */
 .timeline::before {
   content: '';
   position: absolute;
@@ -83,7 +125,7 @@ $details-background-color: #e8d6be;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  width: 20px; /* 🔥 Inicialmente pequeño */
+  width: 20px;
   height: 20px;
   display: flex;
   align-items: center;
@@ -92,7 +134,7 @@ $details-background-color: #e8d6be;
 }
 
 .year span {
-  font-size: 1.8rem; /* 🔥 Inicialmente oculto */
+  font-size: 1.8rem;
   opacity: 0;
   transition: all 0.3s ease-in-out;
 }
@@ -101,6 +143,7 @@ $details-background-color: #e8d6be;
   color: $subtitle-color;
 }
 
+/* Fondo del año grande detrás */
 .yearBackground {
   padding-inline: 20px;
   position: absolute;
@@ -123,7 +166,7 @@ $details-background-color: #e8d6be;
   position: relative;
 }
 
-/* 🔻 Ajustes para móviles (MENOR A 768px) 🔻 */
+/* 🔻 Ajustes para móviles 🔻 */
 @media (max-width: 1024px) {
   .timelineEvent {
     background-position: 20%;
@@ -132,7 +175,7 @@ $details-background-color: #e8d6be;
 
 @media (max-width: 768px) {
   .timeline::before {
-    left: 20px; /* Mover la línea a la izquierda */
+    left: 20px;
   }
 
   .timelineEvent {
@@ -141,21 +184,18 @@ $details-background-color: #e8d6be;
     background-image: none !important;
   }
 
-  /* Ocultar la imagen en móviles */
   .timelineEvent::before {
     display: none;
   }
 
-  /* Año alineado a la izquierda */
   .year {
     display: none;
   }
 
-  /* Bloque de texto ahora está debajo del año */
   .details {
     width: 100%;
     margin-left: 0;
-    padding-left: 40px; /* Asegurar espacio con la línea */
+    padding-left: 40px;
     border-radius: 0;
     box-shadow: none;
   }
