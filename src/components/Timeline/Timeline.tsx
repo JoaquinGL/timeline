@@ -122,13 +122,17 @@ const Timeline: React.FC = () => {
           key={event._lineNumber}
           className={styles.timelineEvent}
           ref={setTimelineRef}
-          style={{ backgroundImage: `url(${event.Imagen})` }}
         >
-          <div className={styles.overlay}></div>
-          <div className={styles.yearBackground} ref={setYearBackgroundRef}>
-            {event.Año}
-            {event.Mes ? <div className={styles.month}>{event.Mes}</div> : null}
+          <div
+            className={styles.card}
+            style={{ backgroundImage: `url(${event.Imagen})` }}
+          >
+            <div className={styles.text}>
+              <div className={styles.card_year}>{event.Año}</div>
+              <div className={styles.card_month}>{event.Mes}</div>
+            </div>
           </div>
+
           <div className={styles.year} ref={setYearRef}>
             <span>{event.Año}</span>
           </div>

@@ -7,6 +7,36 @@
   background-color: #f2e8d2;
 }
 
+.card {
+  aspect-ratio: 5 / 6;
+  width: 100%;
+  max-height: 400px;
+  max-width: calc(50% - 60px);
+  position: relative;
+  background-size: cover;
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-end;
+  color: #f2e8d2;
+  overflow: hidden;
+
+  .text {
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4); /* Negro semi-transparente */
+    backdrop-filter: blur(10px); /* Desenfoque del fondo */
+  }
+
+  .card_year {
+    font-size: 1.8rem;
+  }
+
+  .card_month {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+  }
+}
+
 /* Línea vertical */
 .timeline::before {
   content: '';
@@ -25,7 +55,7 @@
   background-size: contain;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: relative;
   width: 100%;
   min-height: 250px;
@@ -33,20 +63,6 @@
   margin-bottom: 60px;
   border-radius: 0;
   padding-inline: 40px;
-}
-
-/* Imagen de fondo detrás del año */
-.timelineEvent::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1;
 }
 
 /* Año alineado con la línea */
@@ -140,10 +156,7 @@
 
   /* Año alineado a la izquierda */
   .year {
-    left: 20px; /* Mueve el año a la izquierda */
-    transform: none;
-    position: relative;
-    margin-bottom: 10px;
+    display: none;
   }
 
   /* Bloque de texto ahora está debajo del año */
@@ -157,5 +170,10 @@
 
   .yearBackground {
     display: none;
+  }
+
+  .card {
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 }
