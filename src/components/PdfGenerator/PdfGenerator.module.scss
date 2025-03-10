@@ -1,0 +1,21 @@
+$year-background-color: #c08457;
+$year-color: #f6f1eb;
+
+.pdfButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $year-background-color;
+  color: $year-color;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.pdfButton.show {
+  opacity: 1;
+}
