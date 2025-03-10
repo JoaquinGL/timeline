@@ -10,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Timeline: React.FC = () => {
   const [events, setEvents] = useState<TimelineEvent[]>([]);
   const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const yearBackgroundRefs = useRef<(HTMLDivElement | null)[]>([]);
   const yearRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -19,10 +18,6 @@ const Timeline: React.FC = () => {
 
   const setTimelineRef = useCallback((el: HTMLDivElement | null) => {
     if (el) timelineRefs.current.push(el);
-  }, []);
-
-  const setYearBackgroundRef = useCallback((el: HTMLDivElement | null) => {
-    if (el) yearBackgroundRefs.current.push(el);
   }, []);
 
   const setYearRef = useCallback((el: HTMLDivElement | null) => {
@@ -50,27 +45,6 @@ const Timeline: React.FC = () => {
               },
             },
           );
-
-          // Animación del yearBackground (aparece un poco más tarde)
-          if (yearBackgroundRefs.current[index]) {
-            gsap.fromTo(
-              yearBackgroundRefs.current[index],
-              { opacity: 0, x: -50 },
-              {
-                opacity: 1,
-                x: -20,
-                duration: 1,
-                ease: 'power3.out',
-                delay: 0.3,
-                scrollTrigger: {
-                  trigger: el,
-                  start: 'top 80%',
-                  end: 'bottom 20%',
-                  toggleActions: 'play none none reverse',
-                },
-              },
-            );
-          }
 
           // 🔥 Animación del year (círculo -> expansión con texto)
           if (yearRefs.current[index]) {

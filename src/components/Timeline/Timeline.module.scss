@@ -1,10 +1,17 @@
+$timeline-background-color: #f2e8d2;
+$timeline-line-color: #c08457;
+$year-background-color: #c08457;
+$year-color: #f6f1eb;
+$subtitle-color: #9c6644;
+$details-background-color: #e8d6be;
+
 .timeline {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px;
   position: relative;
-  background-color: #f2e8d2;
+  background-color: $timeline-background-color;
 }
 
 .card {
@@ -17,7 +24,7 @@
   border-radius: 20px;
   display: flex;
   align-items: flex-end;
-  color: #f2e8d2;
+  color: $timeline-background-color;
   overflow: hidden;
 
   .text {
@@ -45,7 +52,7 @@
   left: 50%;
   width: 4px;
   height: 100%;
-  background-color: #c08457;
+  background-color: $timeline-line-color;
   transform: translateX(-50%);
 }
 
@@ -68,8 +75,8 @@
 /* Año alineado con la línea */
 .year {
   font-weight: bold;
-  background-color: #c08457;
-  color: #f6f1eb;
+  background-color: $year-background-color;
+  color: $year-color;
   padding: 5px;
   border-radius: 50%;
   position: absolute;
@@ -91,18 +98,7 @@
 }
 
 .subtitle {
-  color: #9c6644;
-}
-
-.verticalLine {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 4px;
-  height: 100%;
-  background-color: #222;
-  transform: translateX(-50%);
-  z-index: 2;
+  color: $subtitle-color;
 }
 
 .yearBackground {
@@ -117,13 +113,9 @@
   z-index: 1;
 }
 
-.month {
-  font-size: 1.1rem;
-}
-
 /* Contenido siempre a la derecha */
 .details {
-  background: #e8d6be;
+  background: $details-background-color;
   padding: 20px;
   border-radius: 10px;
   width: 45%;
